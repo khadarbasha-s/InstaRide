@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <circle cx="30" cy="30" r="22" fill="#FFC107"/>
+  <text x="30" y="38" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="900" font-size="22" fill="#1A1A1A">F</text>
+  <text x="62" y="38" font-family="Inter,Arial,sans-serif" font-weight="900" font-size="22" fill="#1A1A1A">Fast</text>
+  <text x="118" y="38" font-family="Inter,Arial,sans-serif" font-weight="900" font-size="22" fill="#E0A800">Rental</text>
+</svg>

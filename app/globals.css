@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Sun-Drenched palette */
+    --background: 38 33% 96%;          /* #FAF6F0 cream */
+    --foreground: 28 14% 14%;          /* #2A2520 cocoa */
+
+    --primary: 39 60% 56%;             /* #D4A24B mustard */
+    --primary-foreground: 28 14% 14%;
+
+    --secondary: 28 14% 14%;
+    --secondary-foreground: 38 33% 96%;
+
+    --muted: 39 39% 88%;               /* #F0E8D8 cream-deep */
+    --muted-foreground: 28 8% 38%;     /* cocoa-muted */
+
+    --accent: 39 75% 92%;
+    --accent-foreground: 28 14% 14%;
+
+    --destructive: 8 50% 53%;          /* warm rust */
+    --destructive-foreground: 0 0% 100%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 28 14% 14%;
+
+    --border: 36 18% 82%;
+    --input: 36 18% 82%;
+    --ring: 39 60% 56%;
+
+    --radius: 0.875rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-brand-cream text-brand-cocoa font-sans;
+  }
+
+  /* Editorial type scale */
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-[64px] font-bold tracking-[-0.02em] leading-[1.05];
+  }
+  h2 {
+    @apply text-3xl md:text-4xl font-bold tracking-[-0.015em] leading-tight;
+  }
+  h3 {
+    @apply text-2xl font-bold tracking-tight;
+  }
+  h4 {
+    @apply text-xl font-semibold;
+  }
+
+  /* Editorial serif — used in selected headlines */
+  .serif {
+    font-family: var(--font-fraunces), Georgia, serif;
+  }
+  .serif-italic {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  ::selection {
+    background-color: #D4A24B;
+    color: #2A2520;
+  }
+}
+
+@layer utilities {
+  .prose-fastrental p {
+    @apply mb-4 leading-relaxed text-brand-cocoa-muted;
+  }
+  .prose-fastrental h2 {
+    @apply mt-10 mb-3 text-3xl font-bold text-brand-cocoa tracking-tight;
+  }
+  .prose-fastrental h3 {
+    @apply mt-7 mb-2 text-2xl font-semibold text-brand-cocoa;
+  }
+  .prose-fastrental ul {
+    @apply list-disc pl-6 mb-4 space-y-1 text-brand-cocoa-muted;
+  }
+  .prose-fastrental a {
+    @apply text-brand-terracotta underline underline-offset-2 hover:text-brand-terracotta-deep;
+  }
+
+  .marquee-track {
+    width: max-content;
+    animation: marquee 40s linear infinite;
+  }
+
+  /* Editorial grain texture — barely visible, adds humanity */
+  .bg-grain {
+    background-image:
+      radial-gradient(circle at 25% 25%, rgba(42, 37, 32, 0.04) 1px, transparent 1px),
+      radial-gradient(circle at 75% 75%, rgba(42, 37, 32, 0.03) 1px, transparent 1px);
+    background-size: 32px 32px, 32px 32px;
+    background-position: 0 0, 16px 16px;
+  }
+
+  /* Soft yellow spotlight on cream */
+  .bg-spotlight-warm {
+    background:
+      radial-gradient(circle at 78% 22%, rgba(212, 162, 75, 0.18), transparent 55%),
+      radial-gradient(circle at 12% 88%, rgba(198, 125, 94, 0.08), transparent 50%);
+  }
+
+  /* Card lift — softer, more editorial */
+  .card-lift {
+    transition: transform 380ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 380ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 18px 36px -16px rgba(42, 37, 32, 0.15),
+      0 6px 12px -6px rgba(212, 162, 75, 0.15);
+  }
+
+  /* Reveal */
+  .reveal-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 800ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                transform 800ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Animations */
+  .animate-float {
+    animation: float 7s ease-in-out infinite;
+  }
+  .animate-float-slow {
+    animation: float 11s ease-in-out infinite;
+  }
+  .animate-ken-burns {
+    animation: ken-burns 22s ease-in-out infinite alternate;
+  }
+
+  /* Sticker rotation — used on badges that should feel handmade */
+  .rotate-stamp-1 { transform: rotate(-4deg); }
+  .rotate-stamp-2 { transform: rotate(3deg); }
+  .rotate-stamp-3 { transform: rotate(-2deg); }
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+@keyframes ken-burns {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

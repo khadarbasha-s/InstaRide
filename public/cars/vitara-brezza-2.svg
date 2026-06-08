@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1200" preserveAspectRatio="xMidYMid slice">
+  <rect width="1500" height="1200" fill="#F4E5DC"/>
+
+  <!-- Subtle grain dots -->
+  <g opacity="0.06" fill="#C67D5E">
+    <circle cx="180" cy="240" r="2"/>
+    <circle cx="380" cy="380" r="2"/>
+    <circle cx="600" cy="220" r="2"/>
+    <circle cx="820" cy="420" r="2"/>
+    <circle cx="1080" cy="280" r="2"/>
+    <circle cx="1300" cy="440" r="2"/>
+    <circle cx="260" cy="640" r="2"/>
+    <circle cx="500" cy="780" r="2"/>
+    <circle cx="780" cy="680" r="2"/>
+    <circle cx="1040" cy="820" r="2"/>
+    <circle cx="1280" cy="740" r="2"/>
+  </g>
+
+  <!-- Big decorative numeral on right (background art) -->
+  <text x="1380" y="780"
+        text-anchor="end"
+        font-family="Fraunces, Georgia, serif"
+        font-style="italic"
+        font-size="520"
+        font-weight="400"
+        opacity="0.08"
+        fill="#2A2520">2</text>
+
+  <!-- Top hairline -->
+  <line x1="120" y1="240" x2="280" y2="240" stroke="#C67D5E" stroke-width="3" opacity="0.6"/>
+
+  <!-- Brand wordmark -->
+  <text x="120" y="295"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="28"
+        font-weight="700"
+        letter-spacing="7"
+        fill="#2A2520">MARUTI SUZUKI</text>
+
+  <!-- Model name in serif (centered vertically) -->
+  <text x="120" y="700"
+        font-family="Fraunces, Georgia, serif"
+        font-size="180"
+        font-weight="700"
+        letter-spacing="-3"
+        fill="#2A2520">Vitara Brezza</text>
+
+  <!-- Category chip -->
+  <g transform="translate(120, 770)">
+    <rect width="260" height="56" rx="28" fill="#C67D5E"/>
+    <text x="130" y="36"
+          text-anchor="middle"
+          font-family="Inter, system-ui, sans-serif"
+          font-size="16"
+          font-weight="700"
+          letter-spacing="3.5"
+          fill="#FAF6F0">COMPACT SUV</text>
+  </g>
+
+  <!-- Bottom-left micro-detail -->
+  <text x="120" y="1110"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="13"
+        font-weight="600"
+        letter-spacing="2.5"
+        opacity="0.4"
+        fill="#2A2520">SELF · DRIVE · INDIA</text>
+
+  <!-- Bottom-right wordmark -->
+  <text x="1380" y="1110"
+        text-anchor="end"
+        font-family="Fraunces, Georgia, serif"
+        font-style="italic"
+        font-size="28"
+        opacity="0.45"
+        fill="#2A2520">fastrental</text>
+</svg>
