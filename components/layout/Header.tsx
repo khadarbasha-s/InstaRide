@@ -7,6 +7,7 @@ import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 
 const NAV = [
+  { href: "/", label: "Home" },
   { href: "/goa/self-drive-car-rental-goa", label: "Goa" },
   { href: "/jaipur/self-drive-car-rental-jaipur", label: "Jaipur" },
   { href: "/chandigarh/self-drive-car-rental-chandigarh", label: "Chandigarh" },
