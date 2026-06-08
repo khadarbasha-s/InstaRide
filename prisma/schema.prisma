@@ -1,25 +1,32 @@
-// FastRental Prisma schema
-// SQLite for dev. Switch provider to "postgresql" + restore enums/arrays for prod.
+// Postgres version of the FastRental schema — used for Vercel deployment.
+// Copy this over prisma/schema.prisma when deploying to switch providers.
+//
+//   cp prisma/schema.postgres.prisma prisma/schema.prisma
+//   pnpm prisma generate
+//   pnpm prisma db push
+//   pnpm db:seed
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-// NOTE for SQLite: enums and String[] are not supported.
-// Strings store: role, category, transmission, fuelType, leadStatus, leadSource.
-// Arrays (features, tags, images) are stored as JSON strings — helpers in lib/json.ts.
+// Schema is otherwise identical to the SQLite version.
+// String columns for role / category / transmission / fuelType / status / source
+// are kept (instead of enums) so the model code stays the same across both DBs.
+// "featuresJson" and "tagsJson" remain as JSON-encoded strings to avoid
+// array-type differences between SQLite and Postgres.
 
 model User {
   id           String   @id @default(cuid())
   email        String   @unique
   passwordHash String
   name         String
-  role         String   @default("ADMIN") // ADMIN
+  role         String   @default("ADMIN")
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
@@ -65,9 +72,9 @@ model Car {
   name           String
   brand          String
   model          String
-  category       String // HATCHBACK | SEDAN | SUV | MPV | COMPACT_SUV | LUXURY | OFF_ROAD
-  transmission   String // MANUAL | AUTOMATIC
-  fuelType       String // PETROL | DIESEL | CNG | ELECTRIC | HYBRID
+  category       String
+  transmission   String
+  fuelType       String
   seats          Int
   mileage        Float
   engineCC       Int?
@@ -119,8 +126,8 @@ model Lead {
   car          Car?      @relation(fields: [carId], references: [id], onDelete: SetNull)
   locationName String?
   message      String?
-  source       String    @default("CONTACT_FORM") // CONTACT_FORM | CAR_DETAIL_FORM | WHATSAPP_CLICK | CALL_CLICK
-  status       String    @default("NEW") // NEW | CONTACTED | CONVERTED | LOST
+  source       String    @default("CONTACT_FORM")
+  status       String    @default("NEW")
   notes        String?
   utmSource    String?
   utmMedium    String?
@@ -155,7 +162,7 @@ model Faq {
   id        String   @id @default(cuid())
   question  String
   answer    String
-  category  String   @default("general") // general | goa | booking | policy
+  category  String   @default("general")
   sortOrder Int      @default(0)
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
