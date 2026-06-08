@@ -89,14 +89,15 @@ const MAP: Record<string, string> = {
 };
 
 function pathsFor(base: string): string[] {
-  const jpg1 = join(CARS_DIR, `${base}-1.jpg`);
-  const jpg2 = join(CARS_DIR, `${base}-2.jpg`);
-  // If JPG exists, use it (with .jpg-2 as variant — fall back to -1 if -2 missing)
-  if (existsSync(jpg1)) {
-    const v2 = existsSync(jpg2) ? `/cars/${base}-2.jpg` : `/cars/${base}-1.jpg`;
-    return [`/cars/${base}-1.jpg`, v2];
+  // Try JPG, then PNG, then fall back to designed SVG
+  for (const ext of ["jpg", "png"]) {
+    const p1 = join(CARS_DIR, `${base}-1.${ext}`);
+    const p2 = join(CARS_DIR, `${base}-2.${ext}`);
+    if (existsSync(p1)) {
+      const v2 = existsSync(p2) ? `/cars/${base}-2.${ext}` : `/cars/${base}-1.${ext}`;
+      return [`/cars/${base}-1.${ext}`, v2];
+    }
   }
-  // Otherwise fall back to the designed SVG card
   return [`/cars/${base}-1.svg`, `/cars/${base}-2.svg`];
 }
 
